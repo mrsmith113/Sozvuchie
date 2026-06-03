@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Брендбук — Со-звучие 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Nunito:wght@400;600;700;800&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   SHELL — навигация и табы
+══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:  #0F1C3F;
+  --navy2: #1B2E5E;
+  --blue:  #3AABDE;
+  --green: #7DC142;
+  --gold:  #F0B429;
+  --warm:  #FFF8EE;
+  --text:  #1a2340;
+  --muted: #6B7A99;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; background: #0A1228; margin: 0; }
+
+/* ── TOP BAR ── */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: rgba(10,18,40,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(58,171,222,0.15);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 20px;
+  height: 60px;
+}
+
+.tb-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  margin-right: 32px;
+  flex-shrink: 0;
+}
+.tb-logo-icon {
+  width: 34px; height: 34px;
+  background: linear-gradient(135deg, var(--blue), var(--green));
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+}
+.tb-logo-icon svg { width: 20px; height: 20px; }
+.tb-logo-name {
+  font-weight: 800; font-size: 15px; color: white; letter-spacing: -0.3px; line-height: 1;
+}
+.tb-logo-name .dash { color: var(--blue); font-weight: 300; }
+.tb-logo-sub {
+  font-size: 7px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-top: 3px;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  flex-shrink: 0;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.35);
+  transition: all 0.2s;
+  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
+}
+.tab-btn:hover { color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.06); }
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--blue), var(--green));
+  color: white;
+  box-shadow: 0 4px 16px rgba(58,171,222,0.3);
+}
+
+.tb-badge {
+  flex-shrink: 0;
+  margin-left: 12px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  white-space: nowrap;
+}
+
+/* ── PANELS ── */
+.panel {
+  display: none;
+  padding-top: 60px;
+  min-height: 100vh;
+}
+.panel.active { display: block; }
+
+/* ══════════════════════════════════════
+   TAB 1 — АНАЛИЗ ЛОГОТИПА
+══════════════════════════════════════ */
+.t1-body {
+  font-family: 'Nunito', sans-serif;
+  background: #EAEEF5;
+  min-height: 100vh;
+  padding: 40px 16px 60px;
+  color: #1a1a2e;
+}
+
+.t1-h1 {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(18px, 4vw, 26px);
+  color: #1B2A5E;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+.t1-subtitle {
+  text-align: center;
+  color: #6b7280;
+  font-size: 13px;
+  margin-bottom: 36px;
+}
+.t1-section-title {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: 24px;
+}
+
+.t1-analysis {
+  max-width: 760px;
+  margin: 0 auto 44px;
+  background: white;
+  border-radius: 20px;
+  padding: 28px 32px;
+  box-shadow: 0 4px 24px rgba(27,42,94,0.08);
+}
+.t1-analysis h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; font-size: 15px; color: #1B2A5E;
+  margin-bottom: 16px;
+}
+.t1-issues {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.t1-issue {
+  background: #FEF2F2;
+  border-left: 3px solid #EF4444;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.5;
+}
+.t1-issue strong {
+  color: #DC2626; display: block; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;
+}
+
+.t1-logos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto 48px;
+}
+.t1-logo-card {
+  background: white;
+  border-radius: 22px;
+  padding: 36px 28px 28px;
+  box-shadow: 0 6px 32px rgba(27,42,94,0.09);
+  display: flex; flex-direction: column; align-items: center;
+  position: relative;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.t1-logo-card:hover { transform: translateY(-3px); box-shadow: 0 12px 48px rgba(27,42,94,0.14); }
+
+.t1-card-badge {
+  position: absolute; top: 14px; right: 14px;
+  font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
+}
+.t1-b1 { background: #EFF6FF; color: #1D4ED8; }
+.t1-b2 { background: #F0FDF4; color: #166534; }
+.t1-b3 { background: #FDF4FF; color: #7E22CE; }
+
+.t1-logo-display {
+  width: 100%; display: flex; justify-content: center; align-items: center;
+  padding: 24px 0 20px; margin-bottom: 20px; border-radius: 14px;
+}
+.t1-d1 { background: linear-gradient(135deg, #EFF8FF 0%, #F0FFF4 100%); }
+.t1-d2 { background: #1B2A5E; }
+.t1-d3 { background: linear-gradient(135deg, #FDF4FF 0%, #EEF2FF 100%); }
+
+/* variant 1 logo */
+.lv1 { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.lv1-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 24px; color: #1B2A5E; letter-spacing: -0.5px; }
+.lv1-tag  { font-family: 'Nunito', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #3AABDE; margin-top: 2px; }
+/* variant 2 logo */
+.lv2 { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.lv2-icon { width: 64px; height: 64px; background: linear-gradient(135deg, #3AABDE 0%, #7DC142 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(58,171,222,0.4); }
+.lv2-icon svg { width: 36px; height: 36px; }
+.lv2-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 22px; color: white; }
+.lv2-tag  { font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 3px; }
+/* variant 3 logo */
+.lv3 { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.lv3-emblem { width: 76px; height: 76px; border-radius: 50%; background: white; border: 3px solid #E8F4FF; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(58,171,222,0.12); }
+.lv3-emblem svg { width: 46px; height: 46px; }
+.lv3-name { font-family: 'Comfortaa', sans-serif; font-weight: 700; font-size: 22px; color: #1B2A5E; }
+.lv3-name .acc { color: #3AABDE; }
+.lv3-tag  { font-family: 'Comfortaa', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #5A9A2E; margin-top: 2px; }
+
+.t1-card-label { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #1B2A5E; margin-bottom: 5px; text-align: center; }
+.t1-card-desc  { font-size: 12px; color: #6b7280; text-align: center; line-height: 1.6; margin-bottom: 14px; }
+.t1-pros { width: 100%; display: flex; flex-direction: column; gap: 5px; }
+.t1-pro  { display: flex; align-items: flex-start; gap: 7px; font-size: 12px; color: #374151; line-height: 1.4; }
+.t1-pro::before { content: '✓'; font-weight: 700; font-size: 12px; flex-shrink: 0; }
+.t1-p1 .t1-pro::before { color: #3AABDE; }
+.t1-p2 .t1-pro::before { color: #7DC142; }
+.t1-p3 .t1-pro::before { color: #9333EA; }
+
+.t1-comparison {
+  max-width: 700px; margin: 0 auto 36px;
+  background: white; border-radius: 18px; padding: 24px 28px;
+  box-shadow: 0 4px 20px rgba(27,42,94,0.07);
+}
+.t1-comparison h2 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; color: #1B2A5E; margin-bottom: 18px; }
+.t1-comp-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid #F3F4F6; font-size: 13px; gap: 8px; }
+.t1-comp-row:last-child { border-bottom: none; }
+.t1-comp-label { color: #6b7280; flex: 1; }
+.t1-comp-vals { display: flex; gap: 10px; }
+.t1-comp-v { width: 65px; text-align: center; font-weight: 600; font-size: 12px; }
+.t1-v-head { font-weight: 800; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+.t1-c1 { color: #1D4ED8; } .t1-c2 { color: #166534; } .t1-c3 { color: #7E22CE; }
+
+.t1-rec {
+  max-width: 700px; margin: 0 auto;
+  background: linear-gradient(135deg, #1B2A5E 0%, #2E4080 100%);
+  border-radius: 18px; padding: 24px 28px; color: white;
+}
+.t1-rec h2 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 10px; }
+.t1-rec p  { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.82); }
+.t1-rec strong { color: #3AABDE; }
+
+/* ══════════════════════════════════════
+   TAB 2 — БРЕНДБУК ЛОГОТИП
+══════════════════════════════════════ */
+.t2-body {
+  background: #0A1228;
+  min-height: 100vh;
+  color: white;
+}
+.t2-header {
+  text-align: center;
+  padding: 48px 20px 32px;
+}
+.t2-header h1 {
+  font-size: clamp(13px, 3vw, 17px);
+  font-weight: 600; letter-spacing: 6px; text-transform: uppercase;
+  color: #3AABDE; margin-bottom: 8px;
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+.t2-header p {
+  font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 1px;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+.t2-showcase { max-width: 860px; margin: 0 auto; padding: 0 20px 60px; }
+
+.t2-primary {
+  background: linear-gradient(145deg, #1B2E5E 0%, #0F1C3F 50%, #081428 100%);
+  border: 1px solid rgba(58,171,222,0.15);
+  border-radius: 28px;
+  padding: 56px 36px;
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  position: relative; overflow: hidden; margin-bottom: 24px;
+  animation: fadeUp 0.7s ease 0.3s both;
+}
+.t2-grid-bg {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(58,171,222,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(58,171,222,0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.t2-glow {
+  position: absolute; width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(58,171,222,0.07) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+}
+.t2-primary-label {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+}
+.t2-primary-dot { width: 5px; height: 5px; background: #7DC142; border-radius: 50%; }
+
+.t2-logo-mark {
+  display: flex; align-items: center; gap: 18px;
+  position: relative; z-index: 1;
+}
+.t2-icon-wrap {
+  width: 68px; height: 68px;
+  background: linear-gradient(135deg, #3AABDE 0%, #2E8FBF 50%, #7DC142 100%);
+  border-radius: 17px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 8px 28px rgba(58,171,222,0.35);
+  flex-shrink: 0;
+}
+.t2-icon-wrap svg { width: 42px; height: 42px; }
+.t2-text-block { display: flex; flex-direction: column; gap: 4px; }
+.t2-brand-name {
+  font-weight: 800; font-size: clamp(26px, 5vw, 38px);
+  color: white; letter-spacing: -1px; line-height: 1;
+}
+.t2-brand-name .t2-dash { color: #3AABDE; font-weight: 300; }
+.t2-brand-tag {
+  font-size: clamp(8px, 1.2vw, 10px); font-weight: 500;
+  letter-spacing: 3.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); line-height: 1;
+}
+
+.t2-variants {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px; margin-bottom: 22px;
+  animation: fadeUp 0.7s ease 0.45s both;
+}
+.t2-vcard {
+  background: #13204A; border: 1px solid rgba(58,171,222,0.1);
+  border-radius: 18px; padding: 24px 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  position: relative; overflow: hidden;
+}
+.t2-vcard::after {
+  content: attr(data-label);
+  position: absolute; top: 10px; right: 12px;
+  font-size: 8px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,255,255,0.18);
+}
+.t2-vlabel {
+  font-size: 9px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,255,255,0.22); text-align: center;
+}
+
+/* compact */
+.t2-compact { display: flex; align-items: center; gap: 10px; }
+.t2-icon-sm {
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, #3AABDE, #7DC142);
+  border-radius: 11px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 14px rgba(58,171,222,0.3); flex-shrink: 0;
+}
+.t2-icon-sm svg { width: 24px; height: 24px; }
+.t2-brand-sm { font-weight: 800; font-size: 18px; letter-spacing: -0.3px; color: white; }
+.t2-tag-sm   { font-size: 7px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+/* avatar */
+.t2-avatar {
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg, #3AABDE 0%, #7DC142 100%);
+  border-radius: 14px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 20px rgba(58,171,222,0.35);
+}
+.t2-avatar svg { width: 36px; height: 36px; }
+
+/* mono */
+.t2-mono { display: flex; align-items: center; gap: 9px; }
+.t2-icon-mono {
+  width: 38px; height: 38px; border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+}
+.t2-icon-mono svg { width: 22px; height: 22px; }
+.t2-brand-mono { font-weight: 800; font-size: 17px; color: white; letter-spacing: -0.3px; }
+
+/* sizes */
+.t2-sizes { display: flex; gap: 10px; align-items: center; }
+
+/* light */
+.t2-light-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.18); text-align: center; margin-bottom: 6px;
+  animation: fadeUp 0.7s ease 0.55s both;
+}
+.t2-light {
+  background: #F4F7FB; border-radius: 18px; padding: 28px 24px;
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  margin-bottom: 22px;
+  animation: fadeUp 0.7s ease 0.55s both;
+}
+.t2-icon-light {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, #3AABDE, #2E8FBF 60%, #7DC142);
+  border-radius: 13px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 18px rgba(58,171,222,0.22); flex-shrink: 0;
+}
+.t2-icon-light svg { width: 32px; height: 32px; }
+.t2-brand-light { font-weight: 800; font-size: 26px; color: #0F1C3F; letter-spacing: -0.7px; line-height: 1; }
+.t2-brand-light .t2-ld { color: #3AABDE; font-weight: 300; }
+.t2-brand-light-tag { font-size: 8px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #7090B0; margin-top: 4px; }
+
+/* colors */
+.t2-colors { margin-bottom: 20px; animation: fadeUp 0.7s ease 0.65s both; }
+.t2-colors-title { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.2); margin-bottom: 12px; text-align: center; }
+.t2-colors-row { display: flex; gap: 10px; }
+.t2-chip { flex: 1; border-radius: 12px; overflow: hidden; background: #13204A; border: 1px solid rgba(255,255,255,0.05); }
+.t2-chip-sw { height: 52px; }
+.t2-chip-info { padding: 8px 10px; }
+.t2-chip-name { font-size: 10px; font-weight: 700; color: white; margin-bottom: 1px; }
+.t2-chip-hex  { font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.3); font-family: monospace; }
+
+/* typo */
+.t2-typo {
+  background: #13204A; border: 1px solid rgba(58,171,222,0.08);
+  border-radius: 18px; padding: 24px 20px; margin-bottom: 20px;
+  animation: fadeUp 0.7s ease 0.75s both;
+}
+.t2-typo-row { display: flex; align-items: baseline; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.t2-typo-row:last-child { border-bottom: none; }
+.t2-typo-sample { color: white; }
+.t2-typo-label  { font-size: 9px; color: rgba(255,255,255,0.22); font-weight: 500; letter-spacing: 1px; text-align: right; }
+
+/* usage */
+.t2-usage { animation: fadeUp 0.7s ease 0.85s both; }
+.t2-usage-title { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.2); margin-bottom: 12px; text-align: center; }
+.t2-usage-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.t2-usage-card { background: #13204A; border: 1px solid rgba(58,171,222,0.07); border-radius: 14px; padding: 16px 12px; text-align: center; }
+.t2-usage-icon { font-size: 20px; margin-bottom: 6px; }
+.t2-usage-name { font-size: 10px; font-weight: 700; color: white; margin-bottom: 3px; }
+.t2-usage-desc { font-size: 9px; color: rgba(255,255,255,0.3); line-height: 1.4; }
+
+/* ══════════════════════════════════════
+   TAB 3 — ЛЕНДИНГ ЛАГЕРЬ
+   (встроен как iframe для изоляции стилей)
+══════════════════════════════════════ */
+.t3-frame {
+  width: 100%;
+  height: calc(100vh - 60px);
+  border: none;
+  display: block;
+}
+
+/* ══════════════════════════════════════
+   SHARED
+══════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* SVG icon helper */
+.si { width: 100%; height: 100%; }
+
+@media (max-width: 600px) {
+  .t1-issues { grid-template-columns: 1fr; }
+  .t2-variants { grid-template-columns: 1fr; }
+  .t2-usage-grid { grid-template-columns: 1fr 1fr; }
+  .t2-colors-row { flex-wrap: wrap; }
+  .t2-chip { min-width: 40%; }
+  .tb-badge { display: none; }
+  .t2-logo-mark { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ TOP BAR ══ -->
+<div class="topbar">
+  <div class="tb-logo">
+    <div class="tb-logo-icon">
+      <svg viewBox="0 0 44 44" fill="none">
+        <circle cx="22" cy="22" r="4" fill="white"/>
+        <circle cx="22" cy="8"  r="2.5" fill="white" opacity="0.9"/>
+        <circle cx="36" cy="22" r="2.5" fill="white" opacity="0.9"/>
+        <circle cx="10" cy="33" r="2.5" fill="white" opacity="0.9"/>
+        <circle cx="34" cy="33" r="2.5" fill="white" opacity="0.8"/>
+        <line x1="22" y1="18" x2="22" y2="10.5" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+        <line x1="26" y1="22" x2="33.5" y2="22" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+        <line x1="19.5" y1="25.5" x2="11.5" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+        <line x1="24.5" y1="25.5" x2="32" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      </svg>
+    </div>
+    <div>
+      <div class="tb-logo-name">Со<span class="dash">‑</span>звучие</div>
+      <div class="tb-logo-sub">Брендбук 2026</div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab(0)">01 · Анализ логотипа</button>
+    <button class="tab-btn" onclick="switchTab(1)">02 · Брендбук</button>
+    <button class="tab-btn" onclick="switchTab(2)">03 · Лендинг лагерь</button>
+  </div>
+
+  <div class="tb-badge">Июнь 2026</div>
+</div>
+
+<!-- ══════════════════════════════════
+  PANEL 1 — АНАЛИЗ
+══════════════════════════════════ -->
+<div class="panel active" id="panel-0">
+<div class="t1-body">
+
+  <div class="t1-h1">Варианты редизайна логотипа</div>
+  <p class="t1-subtitle">Клуб «Со-звучие» · Анализ и три концепции</p>
+
+  <div class="t1-analysis">
+    <h2>🔍 Анализ текущего логотипа</h2>
+    <div class="t1-issues">
+      <div class="t1-issue"><strong>Устаревший стиль</strong>Пазлы как метафора — активно использовались в 2010–2015 гг. Сейчас выглядят дёшево</div>
+      <div class="t1-issue"><strong>Нет уникальности</strong>Похожий дизайн у 100+ клубов. Не запоминается, не работает на авторитет</div>
+      <div class="t1-issue"><strong>Слабая типографика</strong>Скрипт-шрифт теряет читаемость на малых размерах, в WhatsApp и на вывеске</div>
+      <div class="t1-issue"><strong>Нет ценностного послания</strong>Логотип не говорит: «мы серьёзные», «мы растим умных детей», «нам можно доверять»</div>
+    </div>
+  </div>
+
+  <p class="t1-section-title">Три концепции нового логотипа</p>
+
+  <div class="t1-logos-grid">
+
+    <!-- V1 -->
+    <div class="t1-logo-card">
+      <div class="t1-card-badge t1-b1">Вариант 1</div>
+      <div class="t1-logo-display t1-d1">
+        <div class="lv1">
+          <svg width="70" height="70" viewBox="0 0 80 80" fill="none">
+            <path d="M8 8 L32 8 L32 18 Q38 18 38 24 Q38 30 32 30 L32 40 L8 40 L8 30 Q2 30 2 24 Q2 18 8 18 Z" fill="#3AABDE"/>
+            <path d="M42 8 L72 8 L72 40 L42 40 L42 30 Q36 30 36 24 Q36 18 42 18 Z" fill="#7DC142"/>
+            <path d="M20 44 L60 44 L60 72 L50 72 Q50 66 44 66 Q38 66 38 72 L20 72 L20 58 Q14 58 14 52 Q14 46 20 46 Z" fill="none" stroke="#3AABDE" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+          <div><div class="lv1-name">Со-звучие</div><div class="lv1-tag">Детский клуб развития</div></div>
+        </div>
+      </div>
+      <div class="t1-card-label">«Чистый и современный»</div>
+      <p class="t1-card-desc">Сохраняем пазл, но делаем его геометрически строгим. Минимализм в духе Летово и Новой Школы.</p>
+      <div class="t1-pros t1-p1">
+        <div class="t1-pro">Узнаваемая преемственность — родители не потеряются</div>
+        <div class="t1-pro">Работает на белом, тёмном, цветном фоне</div>
+        <div class="t1-pro">Читается в Telegram-аватарке 32px</div>
+      </div>
+    </div>
+
+    <!-- V2 -->
+    <div class="t1-logo-card">
+      <div class="t1-card-badge t1-b2">Вариант 2 ⭐ Выбран</div>
+      <div class="t1-logo-display t1-d2">
+        <div class="lv2">
+          <div class="lv2-icon">
+            <svg viewBox="0 0 44 44" fill="none" width="36" height="36">
+              <circle cx="22" cy="22" r="4" fill="white"/>
+              <circle cx="22" cy="8"  r="2.5" fill="white" opacity="0.9"/>
+              <circle cx="36" cy="22" r="2.5" fill="white" opacity="0.9"/>
+              <circle cx="10" cy="33" r="2.5" fill="white" opacity="0.9"/>
+              <circle cx="34" cy="33" r="2.5" fill="white" opacity="0.8"/>
+              <line x1="22" y1="18" x2="22" y2="10.5" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+              <line x1="26" y1="22" x2="33.5" y2="22" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+              <line x1="19.5" y1="25.5" x2="11.5" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+              <line x1="24.5" y1="25.5" x2="32" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            </svg>
+          </div>
+          <div><div class="lv2-name">Со-звучие</div><div class="lv2-tag">Клуб развития детей</div></div>
+        </div>
+      </div>
+      <div class="t1-card-label">«Премиальный и умный»</div>
+      <p class="t1-card-desc">Граф из точек — символ связи, нейросети, созвучия умов. Язык Летово и Сколково.</p>
+      <div class="t1-pros t1-p2">
+        <div class="t1-pro">Выбивается из толпы детских клубов — выглядит premium</div>
+        <div class="t1-pro">Метафора со-звучие = связь — передана графически</div>
+        <div class="t1-pro">Идеально для сайта, визиток, Telegram-канала</div>
+      </div>
+    </div>
+
+    <!-- V3 -->
+    <div class="t1-logo-card">
+      <div class="t1-card-badge t1-b3">Вариант 3</div>
+      <div class="t1-logo-display t1-d3">
+        <div class="lv3">
+          <div class="lv3-emblem">
+            <svg viewBox="0 0 52 52" fill="none" width="46" height="46">
+              <circle cx="26" cy="26" r="24" stroke="#3AABDE" stroke-width="2" fill="none"/>
+              <circle cx="20" cy="26" r="9" fill="#3AABDE" opacity="0.22"/>
+              <circle cx="32" cy="26" r="9" fill="#7DC142" opacity="0.22"/>
+              <circle cx="20" cy="26" r="9" fill="none" stroke="#3AABDE" stroke-width="2"/>
+              <circle cx="32" cy="26" r="9" fill="none" stroke="#7DC142" stroke-width="2"/>
+              <circle cx="26" cy="26" r="3" fill="#1B2A5E"/>
+            </svg>
+          </div>
+          <div><div class="lv3-name">Со<span class="acc">-</span>звучие</div><div class="lv3-tag">Клуб умных детей</div></div>
+        </div>
+      </div>
+      <div class="t1-card-label">«Тёплый и доверительный»</div>
+      <p class="t1-card-desc">Диаграмма Венна — математика и гармония одновременно. Округлый шрифт создаёт тепло.</p>
+      <div class="t1-pros t1-p3">
+        <div class="t1-pro">Родители воспринимают как мягкий и доверительный</div>
+        <div class="t1-pro">Диаграмма Венна = интеллект + дружелюбие</div>
+        <div class="t1-pro">Легко воспроизвести на любом носителе</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="t1-comparison">
+    <h2>📊 Сравнение вариантов</h2>
+    <div class="t1-comp-row">
+      <div class="t1-comp-label"></div>
+      <div class="t1-comp-vals">
+        <div class="t1-comp-v t1-v-head t1-c1">№1</div>
+        <div class="t1-comp-v t1-v-head t1-c2">№2 ⭐</div>
+        <div class="t1-comp-v t1-v-head t1-c3">№3</div>
+      </div>
+    </div>
+    <div class="t1-comp-row"><div class="t1-comp-label">Доверие у родителей</div><div class="t1-comp-vals"><div class="t1-comp-v">★★★★</div><div class="t1-comp-v">★★★★★</div><div class="t1-comp-v">★★★★</div></div></div>
+    <div class="t1-comp-row"><div class="t1-comp-label">Уникальность</div><div class="t1-comp-vals"><div class="t1-comp-v">★★★</div><div class="t1-comp-v">★★★★★</div><div class="t1-comp-v">★★★★</div></div></div>
+    <div class="t1-comp-row"><div class="t1-comp-label">Читаемость в аватарке</div><div class="t1-comp-vals"><div class="t1-comp-v">★★★★★</div><div class="t1-comp-v">★★★★★</div><div class="t1-comp-v">★★★★</div></div></div>
+    <div class="t1-comp-row"><div class="t1-comp-label">Подходит для лендинга</div><div class="t1-comp-vals"><div class="t1-comp-v">★★★★</div><div class="t1-comp-v">★★★★★</div><div class="t1-comp-v">★★★★</div></div></div>
+    <div class="t1-comp-row"><div class="t1-comp-label">Преемственность</div><div class="t1-comp-vals"><div class="t1-comp-v">★★★★★</div><div class="t1-comp-v">★★</div><div class="t1-comp-v">★★★★</div></div></div>
+  </div>
+
+  <div class="t1-rec">
+    <h2>💡 Решение принято</h2>
+    <p>Выбран <strong>Вариант 2 — Премиальный</strong>: тёмный фон, иконка-граф, шрифт Montserrat ExtraBold. Это язык premium-образования, который вызывает доверие у требовательных родителей и выделяет клуб среди конкурентов.</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════
+  PANEL 2 — БРЕНДБУК
+══════════════════════════════════ -->
+<div class="panel" id="panel-1">
+<div class="t2-body">
+
+  <div class="t2-header">
+    <h1>Финальный логотип · Брендбук</h1>
+    <p>Со-звучие · Детский клуб развития · Фирменный стиль 2026</p>
+  </div>
+
+  <div class="t2-showcase">
+
+    <!-- PRIMARY -->
+    <div class="t2-primary">
+      <div class="t2-grid-bg"></div>
+      <div class="t2-glow"></div>
+      <div class="t2-primary-label"><div class="t2-primary-dot"></div>Основная версия · Тёмный фон</div>
+      <div class="t2-logo-mark">
+        <div class="t2-icon-wrap">
+          <svg viewBox="0 0 44 44" fill="none" width="42" height="42">
+            <circle cx="22" cy="22" r="4" fill="white"/>
+            <circle cx="22" cy="8"  r="2.5" fill="white" opacity="0.85"/>
+            <circle cx="36" cy="22" r="2.5" fill="white" opacity="0.85"/>
+            <circle cx="10" cy="33" r="2.5" fill="white" opacity="0.85"/>
+            <circle cx="34" cy="33" r="2.5" fill="white" opacity="0.75"/>
+            <circle cx="8"  cy="14" r="2"   fill="white" opacity="0.6"/>
+            <line x1="22" y1="18" x2="22" y2="10.5"  stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            <line x1="26" y1="22" x2="33.5" y2="22"  stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            <line x1="19.5" y1="25.5" x2="11.5" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            <line x1="24.5" y1="25.5" x2="32" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+            <line x1="22" y1="10.5" x2="10" y2="30.5" stroke="white" stroke-width="1" stroke-linecap="round" opacity="0.15"/>
+            <line x1="8" y1="14" x2="22" y2="18" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="t2-text-block">
+          <div class="t2-brand-name">Со<span class="t2-dash">‑</span>звучие</div>
+          <div class="t2-brand-tag">Детский клуб развития</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VARIANTS -->
+    <div class="t2-variants">
+
+      <div class="t2-vcard" data-label="Compact">
+        <div class="t2-compact">
+          <div class="t2-icon-sm">
+            <svg viewBox="0 0 44 44" fill="none" width="24" height="24">
+              <circle cx="22" cy="22" r="4" fill="white"/>
+              <circle cx="22" cy="8" r="2.5" fill="white" opacity="0.9"/>
+              <circle cx="36" cy="22" r="2.5" fill="white" opacity="0.9"/>
+              <circle cx="10" cy="33" r="2.5" fill="white" opacity="0.9"/>
+              <line x1="22" y1="18" x2="22" y2="10.5" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+              <line x1="26" y1="22" x2="33.5" y2="22" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+              <line x1="19.5" y1="25.5" x2="11.5" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+            </svg>
+          </div>
+          <div><div class="t2-brand-sm">Со‑звучие</div><div class="t2-tag-sm">Клуб развития</div></div>
+        </div>
+        <div class="t2-vlabel">Шапка сайта · Визитка</div>
+      </div>
+
+      <div class="t2-vcard" data-label="Avatar">
+        <div class="t2-avatar">
+          <svg viewBox="0 0 44 44" fill="none" width="36" height="36">
+            <circle cx="22" cy="22" r="4" fill="white"/>
+            <circle cx="22" cy="8"  r="2.5" fill="white" opacity="0.9"/>
+            <circle cx="36" cy="22" r="2.5" fill="white" opacity="0.9"/>
+            <circle cx="10" cy="33" r="2.5" fill="white" opacity="0.9"/>
+            <circle cx="34" cy="33" r="2.5" fill="white" opacity="0.8"/>
+            <line x1="22" y1="18" x2="22" y2="10.5" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+            <line x1="26" y1="22" x2="33.5" y2="22" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+            <line x1="19.5" y1="25.5" x2="11.5" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+            <line x1="24.5" y1="25.5" x2="32" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="t2-vlabel">Telegram · WhatsApp · Соцсети</div>
+      </div>
+
+      <div class="t2-vcard" data-label="Mono">
+        <div class="t2-mono">
+          <div class="t2-icon-mono">
+            <svg viewBox="0 0 44 44" fill="none" width="22" height="22">
+              <circle cx="22" cy="22" r="3.5" fill="white"/>
+              <circle cx="22" cy="9"  r="2.2" fill="white" opacity="0.8"/>
+              <circle cx="35" cy="22" r="2.2" fill="white" opacity="0.8"/>
+              <circle cx="11" cy="33" r="2.2" fill="white" opacity="0.8"/>
+              <line x1="22" y1="18.5" x2="22" y2="11.2" stroke="white" stroke-width="1.3" stroke-linecap="round" opacity="0.7"/>
+              <line x1="25.5" y1="22" x2="32.8" y2="22" stroke="white" stroke-width="1.3" stroke-linecap="round" opacity="0.7"/>
+              <line x1="19.5" y1="25.2" x2="12.5" y2="31" stroke="white" stroke-width="1.3" stroke-linecap="round" opacity="0.7"/>
+            </svg>
+          </div>
+          <div class="t2-brand-mono">Со‑звучие</div>
+        </div>
+        <div class="t2-vlabel">Монохром · Печать</div>
+      </div>
+
+      <div class="t2-vcard" data-label="Favicon">
+        <div class="t2-sizes">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#3AABDE,#7DC142);border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(58,171,222,0.3);">
+            <svg viewBox="0 0 44 44" fill="none" width="28" height="28"><circle cx="22" cy="22" r="4" fill="white"/><circle cx="22" cy="8" r="2.5" fill="white" opacity="0.9"/><circle cx="36" cy="22" r="2.5" fill="white" opacity="0.9"/><circle cx="10" cy="33" r="2.5" fill="white" opacity="0.9"/><line x1="22" y1="18" x2="22" y2="10.5" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/><line x1="26" y1="22" x2="33.5" y2="22" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/><line x1="19.5" y1="25.5" x2="11.5" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/></svg>
+          </div>
+          <div style="width:32px;height:32px;background:linear-gradient(135deg,#3AABDE,#7DC142);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 44 44" fill="none" width="18" height="18"><circle cx="22" cy="22" r="4" fill="white"/><circle cx="22" cy="8" r="2.5" fill="white" opacity="0.9"/><circle cx="36" cy="22" r="2.5" fill="white" opacity="0.9"/><circle cx="10" cy="33" r="2.5" fill="white" opacity="0.9"/><line x1="22" y1="18" x2="22" y2="10.5" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/><line x1="26" y1="22" x2="33.5" y2="22" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/><line x1="19.5" y1="25.5" x2="11.5" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/></svg>
+          </div>
+          <div style="width:20px;height:20px;background:linear-gradient(135deg,#3AABDE,#7DC142);border-radius:5px;display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 44 44" fill="none" width="12" height="12"><circle cx="22" cy="22" r="5" fill="white"/><circle cx="22" cy="8" r="3" fill="white" opacity="0.9"/><circle cx="36" cy="22" r="3" fill="white" opacity="0.9"/><circle cx="10" cy="33" r="3" fill="white" opacity="0.9"/></svg>
+          </div>
+        </div>
+        <div class="t2-vlabel">Фавикон · 48 / 32 / 20px</div>
+      </div>
+
+    </div>
+
+    <!-- LIGHT -->
+    <div class="t2-light-label">Версия для светлого фона</div>
+    <div class="t2-light">
+      <div class="t2-icon-light">
+        <svg viewBox="0 0 44 44" fill="none" width="32" height="32">
+          <circle cx="22" cy="22" r="4" fill="white"/>
+          <circle cx="22" cy="8"  r="2.5" fill="white" opacity="0.9"/>
+          <circle cx="36" cy="22" r="2.5" fill="white" opacity="0.9"/>
+          <circle cx="10" cy="33" r="2.5" fill="white" opacity="0.9"/>
+          <circle cx="34" cy="33" r="2.5" fill="white" opacity="0.8"/>
+          <line x1="22" y1="18" x2="22" y2="10.5" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <line x1="26" y1="22" x2="33.5" y2="22" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <line x1="19.5" y1="25.5" x2="11.5" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <line x1="24.5" y1="25.5" x2="32" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+        </svg>
+      </div>
+      <div>
+        <div class="t2-brand-light">Со<span class="t2-ld">‑</span>звучие</div>
+        <div class="t2-brand-light-tag">Детский клуб развития</div>
+      </div>
+    </div>
+
+    <!-- COLORS -->
+    <div class="t2-colors">
+      <div class="t2-colors-title">Фирменная палитра</div>
+      <div class="t2-colors-row">
+        <div class="t2-chip"><div class="t2-chip-sw" style="background:#0F1C3F;"></div><div class="t2-chip-info"><div class="t2-chip-name">Navy Deep</div><div class="t2-chip-hex">#0F1C3F</div></div></div>
+        <div class="t2-chip"><div class="t2-chip-sw" style="background:#3AABDE;"></div><div class="t2-chip-info"><div class="t2-chip-name">Sky Blue</div><div class="t2-chip-hex">#3AABDE</div></div></div>
+        <div class="t2-chip"><div class="t2-chip-sw" style="background:#7DC142;"></div><div class="t2-chip-info"><div class="t2-chip-name">Fresh Green</div><div class="t2-chip-hex">#7DC142</div></div></div>
+        <div class="t2-chip"><div class="t2-chip-sw" style="background:#F0B429;"></div><div class="t2-chip-info"><div class="t2-chip-name">Gold Accent</div><div class="t2-chip-hex">#F0B429</div></div></div>
+        <div class="t2-chip"><div class="t2-chip-sw" style="background:#FFFFFF; border-top: 1px solid #eee;"></div><div class="t2-chip-info"><div class="t2-chip-name">White</div><div class="t2-chip-hex">#FFFFFF</div></div></div>
+      </div>
+    </div>
+
+    <!-- TYPO -->
+    <div class="t2-typo">
+      <div class="t2-colors-title" style="margin-bottom:0;">Типографика — Montserrat</div>
+      <div class="t2-typo-row"><div class="t2-typo-sample" style="font-size:28px;font-weight:800;letter-spacing:-0.5px;">Со-звучие</div><div class="t2-typo-label">ExtraBold 800<br>Логотип, H1</div></div>
+      <div class="t2-typo-row"><div class="t2-typo-sample" style="font-size:20px;font-weight:700;">Математика и шахматы</div><div class="t2-typo-label">Bold 700<br>Заголовки H2–H3</div></div>
+      <div class="t2-typo-row"><div class="t2-typo-sample" style="font-size:14px;font-weight:400;color:rgba(255,255,255,0.7);line-height:1.6;">Мы готовим детей, которые умеют думать и создавать новое.</div><div class="t2-typo-label">Regular 400<br>Основной текст</div></div>
+      <div class="t2-typo-row"><div class="t2-typo-sample" style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#3AABDE;">Математика · Шахматы · ИИ</div><div class="t2-typo-label">700 Caps<br>Теги, подписи</div></div>
+    </div>
+
+    <!-- USAGE -->
+    <div class="t2-usage">
+      <div class="t2-usage-title">Где использовать</div>
+      <div class="t2-usage-grid">
+        <div class="t2-usage-card"><div class="t2-usage-icon">📱</div><div class="t2-usage-name">Telegram</div><div class="t2-usage-desc">Иконка-аватарка с градиентом, без текста</div></div>
+        <div class="t2-usage-card"><div class="t2-usage-icon">🌐</div><div class="t2-usage-name">Лендинг</div><div class="t2-usage-desc">Горизонтальный логотип в шапке</div></div>
+        <div class="t2-usage-card"><div class="t2-usage-icon">🖨️</div><div class="t2-usage-name">Печать</div><div class="t2-usage-desc">Монохром на листовках и грамотах</div></div>
+        <div class="t2-usage-card"><div class="t2-usage-icon">👕</div><div class="t2-usage-name">Мерч</div><div class="t2-usage-desc">Иконка на футболки и кепки</div></div>
+        <div class="t2-usage-card"><div class="t2-usage-icon">📋</div><div class="t2-usage-name">Документы</div><div class="t2-usage-desc">Горизонтальный логотип в шапке договора</div></div>
+        <div class="t2-usage-card"><div class="t2-usage-icon">🏫</div><div class="t2-usage-name">Вывеска</div><div class="t2-usage-desc">Тёмный фон с подсветкой</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════
+  PANEL 3 — ЛЕНДИНГ
+══════════════════════════════════ -->
+<div class="panel" id="panel-2">
+  <iframe class="t3-frame" src="sozvuchie-camp.html" title="Лендинг летнего лагеря"></iframe>
+</div>
+
+<script>
+function switchTab(idx) {
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i === idx));
+  document.querySelectorAll('.panel').forEach((p,i) => p.classList.toggle('active', i === idx));
+}
+</script>
+</body>
+</html>
